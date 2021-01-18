@@ -1,0 +1,24 @@
+{
+  "name": "number-converter",
+  "version": "1.0.0",
+  "description": "Convert integer numbers into words",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessicasimplicio/number-converter.git"
+  },
+  "author": "Jessica Simplicio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessicasimplicio/number-converter/issues"
+  },
+  "homepage": "https://github.com/jessicasimplicio/number-converter#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
