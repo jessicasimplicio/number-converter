@@ -16,8 +16,7 @@ module.exports.convert = number => {
   return 'Currently converting only units to words'
 }
 
-const getNumberLength = number => {
-  return number.toString().length
-}
+const getNumberLength = number => 
+  number.toString().length
 
 console.log(this.convert(4))
