@@ -9,10 +9,10 @@ describe('Test the conversion', () => {
   })
 
   test('It should return the ten in words', () => {
-    const tenNumber = 20   
-    const result = convert(tenNumber)
-
-    expect(result).toEqual('Currently converting only units to words')
+    expect(convert(10)).toEqual('dez')
+    expect(convert(13)).toEqual('treze')
+    expect(convert(80)).toEqual('oitenta')
+    expect(convert(13)).toEqual('treze')
+    expect(convert(78)).toEqual('setenta e oito')
   })
-
 })
