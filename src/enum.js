@@ -1,6 +1,6 @@
 module.exports.UNITS = Object.freeze({
   0: 'zero',
-  1: 'dois',
+  1: 'um',
   2: 'dois',
   3: 'três',
   4: 'quatro',
@@ -24,8 +24,7 @@ module.exports.FIRST_TEN = {
   19: 'dezenove'
 }
 
-module.exports.TEN = {
-  20: 'vinta',
+  20: 'vinte',
   30: 'trinta',
   40: 'quarenta',
   50: 'cinquenta',
