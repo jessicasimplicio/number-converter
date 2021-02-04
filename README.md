@@ -15,7 +15,7 @@ $ npm install
 
 ## Running the app
 
-You can change the number in line 23 in the file index.js and run:
+You can change the number in line 87 in the file index.js and run:
 
 ```bash
 npm start
@@ -24,4 +24,4 @@ npm start
 ## Test
 
 ```bash
-$ npm test
+npm test
