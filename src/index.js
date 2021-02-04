@@ -5,7 +5,7 @@ const getNumberLength = number =>
 
 const getUnits = number => {
   const unit = getDigitOfUnits(number)
-  return UNITS[unit.toString()]
+  return UNITS[unit]
 }
 
 const getDigitOfUnits = number => 
@@ -20,14 +20,14 @@ const getTens = number => {
 
   
   if (digitOfTens === 1) {
-    return FIRST_TEN[number.toString()]
+    return FIRST_TEN[number]
   } 
 
   if (digitOfUnit === 0) {
-    return TENS[number.toString()]
+    return TENS[number]
   } else {
     const unit = getUnits(digitOfUnit)
-    const tens = digitOfTens.toString() + '0'
+    const tens = Number(digitOfTens.toString() + '0')
     return (`${TENS[tens]} e ${unit}`)
   }
 }
