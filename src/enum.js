@@ -34,3 +34,19 @@ module.exports.TENS = Object.freeze({
   80: 'oitenta',
   90: 'noventa'
 })
+
+module.exports.ONE_HUNDRED = Object.freeze({
+  100: 'cem',
+  MORE: 'cento'
+})
+
+module.exports.HUNDREDS = Object.freeze({
+  200: 'duzentos',
+  300: 'trezentos',
+  400: 'quatrocentos',
+  500: 'quinhentos',
+  600: 'seiscentos',
+  700: 'setecentos',
+  800: 'oitocentos',
+  900: 'novecentos'
+})

@@ -1,4 +1,4 @@
-const { UNITS, TENS, FIRST_TEN } = require('./enum')
+const { UNITS, TENS, FIRST_TEN, ONE_HUNDRED, HUNDREDS } = require('./enum')
 
 const getNumberLength = number => 
   number.toString().length
@@ -12,12 +12,12 @@ const getDigitOfUnits = number =>
   number % 10
 
 const getDigitOfTens = number =>
-  parseInt(number / 10)
+  parseInt(number / 10) % 10
 
-const getTens = number => {
+const getTens = value => {
+  const number = parseInt(value % 100)
   const digitOfTens = getDigitOfTens(number)
   const digitOfUnit = getDigitOfUnits(number)
-
   
   if (digitOfTens === 1) {
     return FIRST_TEN[number]
@@ -29,6 +29,34 @@ const getTens = number => {
     const unit = getUnits(digitOfUnit)
     const tens = Number(digitOfTens.toString() + '0')
     return (`${TENS[tens]} e ${unit}`)
+  }
+}
+
+const getDigitOfHundreds = number => 
+  parseInt(number / 100) % 10
+
+const getHundreds = number => {
+  const digitOfTens = getDigitOfTens(number)
+  const digitOfHundred = getDigitOfHundreds(number)
+  if (number === 100) {
+    return ONE_HUNDRED[number]
+  }
+
+  if (digitOfHundred === 1) {
+    if(digitOfTens === 0){
+      return(`${ONE_HUNDRED.MORE} e ${getUnits(number)}`)
+    } else {
+      return(`${ONE_HUNDRED.MORE} e ${getTens(number)}`)
+    }
+  } 
+
+  if (digitOfHundred !== 1) {
+    const hundred = Number(digitOfHundred.toString() + '00')
+    if(digitOfTens === 0){
+      return(`${HUNDREDS[hundred]} e ${getUnits(number)}`)
+    } else {
+      return(`${HUNDREDS[hundred]} e ${getTens(number)}`)
+    }
   }
 }
 
@@ -49,7 +77,11 @@ module.exports.convert = number => {
     return getTens(number)
   }
 
-  return 'Currently converting only units and tens to words'
+  if (NUMBER_GROUP[numberLength] === 'hundred') {
+    return getHundreds(number)
+  }
+
+  return 'Conversion works only for numbers from 0 to 999'
 }
 
 console.log(this.convert(4))
