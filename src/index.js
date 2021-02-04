@@ -1,5 +1,37 @@
 const { UNITS, TENS, FIRST_TEN } = require('./enum')
 
+const getNumberLength = number => 
+  number.toString().length
+
+const getUnits = number => {
+  const unit = getDigitOfUnits(number)
+  return UNITS[unit.toString()]
+}
+
+const getDigitOfUnits = number => 
+  number % 10
+
+const getDigitOfTens = number =>
+  parseInt(number / 10)
+
+const getTens = number => {
+  const digitOfTens = getDigitOfTens(number)
+  const digitOfUnit = getDigitOfUnits(number)
+
+  
+  if (digitOfTens === 1) {
+    return FIRST_TEN[number.toString()]
+  } 
+
+  if (digitOfUnit === 0) {
+    return TENS[number.toString()]
+  } else {
+    const unit = getUnits(digitOfUnit)
+    const tens = digitOfTens.toString() + '0'
+    return (`${TENS[tens]} e ${unit}`)
+  }
+}
+
 module.exports.convert = number => {
 
   const NUMBER_GROUP = {
@@ -20,36 +52,4 @@ module.exports.convert = number => {
   return 'Currently converting only units and tens to words'
 }
 
-const getNumberLength = number => 
-  number.toString().length
-
 console.log(this.convert(4))
-
-const getDigitOfTens = number =>
-  parseInt(number / 10)
-
-const getDigitOfUnits = number => 
-  number % 10
-
-const getUnits = number =>
-  UNITS[number.toString()]
-
-const getTens = number => {
-  const digitOfTens = getDigitOfTens(number)
-  const digitOfUnit = getDigitOfUnits(number)
-
-  
-  if (digitOfTens === 1) {
-    return FIRST_TEN[number.toString()]
-  } 
-
-  if (digitOfUnit === 0) {
-    return TENS[number.toString()]
-  } else {
-    const unit = digitOfUnit.toString()
-    const tens = digitOfTens.toString() + '0'
-
-    return (`${TENS[tens]} e ${UNITS[unit]}`)
-  }
-}
-  
